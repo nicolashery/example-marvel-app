@@ -1,0 +1,27 @@
+{
+  "name": "example-marvel-app",
+  "version": "1.0.0",
+  "description": "Example Node.js app using the Marvel API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "start": "node app/start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolashery/example-marvel-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nicolashery/example-marvel-app/issues"
+  },
+  "homepage": "https://github.com/nicolashery/example-marvel-app#readme",
+  "devDependencies": {
+    "eslint": "2.5.3"
+  },
+  "dependencies": {
+    "express": "4.13.4"
+  }
+}

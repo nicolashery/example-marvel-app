@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "start": "node app/start"
+    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else browser-refresh app/start; fi"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,11 @@
   },
   "homepage": "https://github.com/nicolashery/example-marvel-app#readme",
   "devDependencies": {
+    "browser-refresh": "1.4.10",
     "eslint": "2.5.3"
   },
   "dependencies": {
+    "browser-refresh-taglib": "1.0.4",
     "express": "4.13.4",
     "marko": "3.0.5"
   }

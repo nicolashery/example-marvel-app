@@ -22,6 +22,7 @@
     "eslint": "2.5.3"
   },
   "dependencies": {
-    "express": "4.13.4"
+    "express": "4.13.4",
+    "marko": "3.0.5"
   }
 }

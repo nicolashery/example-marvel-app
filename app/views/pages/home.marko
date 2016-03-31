@@ -1,5 +1,10 @@
 <layout-use("../layout.marko")>
   <layout-put into="content">
-    <p>Hello world!</p>
+    <characters-list({
+      characters: data.characters
+    })/>
+    <marvel-attribution({
+      attributionText: data.attributionText
+    })/>
   </layout-put>
 </layout-use>

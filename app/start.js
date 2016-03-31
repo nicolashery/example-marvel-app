@@ -1,11 +1,10 @@
 require('marko/browser-refresh').enable();
 
+var config = require('../config');
 var app = require('./app');
 
-var PORT = process.env.PORT || 3000;
-
-app.listen(PORT, function () {
-  console.log('App listening on port ' + PORT);
+app.listen(config.PORT, function () {
+  console.log('App listening on port ' + config.PORT);
 
   // Tell browser-refresh that server is ready to receive requests
   if (process.send) {

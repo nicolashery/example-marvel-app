@@ -1,5 +1,5 @@
-var homeTemplate = require('marko')
-  .load(require.resolve('../views/pages/home.marko'));
+var charatersTemplate = require('marko')
+  .load(require.resolve('../views/pages/characters.marko'));
 var errorTemplate = require('marko')
   .load(require.resolve('../views/pages/error.marko'));
 
@@ -8,7 +8,8 @@ exports.index = function(req, res) {
 
   marvel.findAllCharacters()
   .then(function(body) {
-    homeTemplate.render({
+    charatersTemplate.render({
+      path: req.path,
       characters: body.data.results,
       attributionText: body.attributionText
     }, res);

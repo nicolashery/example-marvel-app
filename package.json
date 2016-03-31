@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else browser-refresh app/start; fi"
+    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else source .env && browser-refresh app/start; fi"
   },
   "repository": {
     "type": "git",

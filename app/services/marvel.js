@@ -33,6 +33,27 @@ Marvel.prototype.findAllCharacters = function(options) {
     });
 };
 
+Marvel.prototype.findCharacter = function(id) {
+  var self = this;
+  var ts = this._timestamp();
+
+  var qs = queryString.stringify({
+    ts: ts,
+    apikey: this.publicKey,
+    hash: this._createHash(ts)
+  });
+  var url = 'http://gateway.marvel.com/v1/public/characters/'+ id + '?' + qs;
+
+  return fetch(url)
+    .then(function(res) {
+      if (res.status !== 200) {
+        return self._handleError(res);
+      }
+
+      return res.json();
+    });
+};
+
 Marvel.prototype._createHash = function(ts) {
   var content = ts + this.privateKey + this.publicKey;
   var hash = crypto.createHash('md5').update(content).digest('hex');
@@ -48,7 +69,9 @@ Marvel.prototype._handleError = function(res) {
   return res.text()
     .then(function(bodyText) {
       var message = res.status + ' ' + res.statusText + ' ' + bodyText;
-      throw new Error(message);
+      var error = new Error(message);
+      error.status = res.status;
+      throw error;
     });
 };
 

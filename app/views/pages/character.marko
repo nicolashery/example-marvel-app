@@ -1,0 +1,13 @@
+<layout-use("../layout.marko", {
+  path: data.path
+})>
+  <layout-put into="content">
+    <div class="page-header">
+      <h1>${data.character.name}</h1>
+    </div>
+    <character-details({character: data.character})/>
+    <marvel-attribution({
+      attributionText: data.attributionText
+    })/>
+  </layout-put>
+</layout-use>

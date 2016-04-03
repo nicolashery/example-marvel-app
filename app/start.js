@@ -1,6 +1,6 @@
-require('marko/browser-refresh').enable();
+require('../config/init/browser-refresh');
 
-var config = require('../config');
+var config = require('../config/app');
 var app = require('./app');
 
 app.listen(config.PORT, function () {

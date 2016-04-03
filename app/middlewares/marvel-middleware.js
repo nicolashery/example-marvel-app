@@ -1,4 +1,4 @@
-var config = require('../../config');
+var config = require('../../config/app');
 var Marvel = require('../services/marvel');
 
 module.exports = function() {

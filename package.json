@@ -5,9 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build:prod; fi",
     "lint": "eslint --ignore-path .gitignore .",
+    "clean": "rm -rf static",
     "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else npm run start:dev; fi",
-    "start:dev": "source .env && concurrently --kill-others --raw 'brunch watch' 'browser-refresh app/start'"
+    "start:dev": "source .env && concurrently --kill-others --raw 'brunch watch' 'browser-refresh app/start'",
+    "build:prod": "brunch build --production"
   },
   "repository": {
     "type": "git",
@@ -28,6 +31,7 @@
     "browser-refresh-client": "1.1.4",
     "browser-refresh-taglib": "1.0.4",
     "brunch": "2.6.1",
+    "clean-css-brunch": "2.0.0",
     "css-brunch": "2.6.1",
     "express": "4.13.4",
     "javascript-brunch": "2.0.0",
@@ -35,6 +39,7 @@
     "morgan": "1.7.0",
     "node-fetch": "1.4.1",
     "query-string": "4.1.0",
-    "tcomb": "3.0.0"
+    "tcomb": "3.0.0",
+    "uglify-js-brunch": "2.0.1"
   }
 }

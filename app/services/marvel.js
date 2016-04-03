@@ -2,6 +2,7 @@ var crypto = require('crypto');
 var fetch = require('node-fetch');
 var queryString = require('query-string');
 
+var Pagination = require('../models/pagination');
 var Character = require('../models/character');
 
 function Marvel(options) {
@@ -13,8 +14,8 @@ Marvel.prototype.findAllCharacters = function(options) {
   var self = this;
   options = options || {};
   var ts = this._timestamp();
-  var limit = typeof options.limit === 'number' ? options.limit : 20;
-  var offset = typeof options.offset === 'number' ? options.offset : 0;
+  var limit = typeof options.limit !== 'undefined' ? options.limit : 20;
+  var offset = typeof options.offset !== 'undefined' ? options.offset : 0;
 
   var qs = queryString.stringify({
     ts: ts,
@@ -34,11 +35,16 @@ Marvel.prototype.findAllCharacters = function(options) {
       return res.json();
     })
     .then(function(body) {
-      body.data.results = body.data.results.map(function(payload) {
+      var pagination = Pagination(body.data);
+      var characters = body.data.results.map(function(payload) {
         return Character(payload);
       });
 
-      return body;
+      return {
+        pagination: pagination,
+        characters: characters,
+        attributionText: body.attributionText
+      };
     });
 };
 
@@ -62,11 +68,12 @@ Marvel.prototype.findCharacter = function(id) {
       return res.json();
     })
     .then(function(body) {
-      body.data.results = body.data.results.map(function(payload) {
-        return Character(payload);
-      });
+      var character = Character(body.data.results[0]);
 
-      return body;
+      return {
+        character: character,
+        attributionText: body.attributionText
+      };
     });
 };
 

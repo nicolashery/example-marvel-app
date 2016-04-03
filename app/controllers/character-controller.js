@@ -12,15 +12,19 @@ var notFoundTemplate = require('marko')
 exports.index = function(req, res, next) {
   var marvel = req.marvel;
   var spf = req.query.spf;
+  var offset = req.query.offset;
 
-  marvel.findAllCharacters()
-  .then(function(body) {
+  marvel.findAllCharacters({
+    offset: offset
+  })
+  .then(function(result) {
     var pageTitle = 'Characters';
     var templateData = {
       pageTitle: pageTitle,
       path: req.path,
-      characters: body.data.results,
-      attributionText: body.attributionText
+      pagination: result.pagination,
+      characters: result.characters,
+      attributionText: result.attributionText
     };
 
     if (spf === 'navigate') {
@@ -42,7 +46,8 @@ exports.index = function(req, res, next) {
     }
 
     charactersTemplate.render(templateData, res);
-  }, next);
+  })
+  .catch(next);
 };
 
 exports.show = function(req, res, next) {
@@ -51,14 +56,13 @@ exports.show = function(req, res, next) {
   var spf = req.query.spf;
 
   marvel.findCharacter(id)
-  .then(function(body) {
-    var character = body.data.results[0];
-    var pageTitle = character.name;
+  .then(function(result) {
+    var pageTitle = result.character.name;
     var templateData = {
       path: req.path,
       pageTitle: pageTitle,
-      character: character,
-      attributionText: body.attributionText
+      character: result.character,
+      attributionText: result.attributionText
     };
 
     if (spf === 'navigate') {
@@ -80,7 +84,8 @@ exports.show = function(req, res, next) {
     }
 
     characterTemplate.render(templateData, res);
-  }, function(err) {
+  })
+  .catch(function(err) {
     if (err.status === 404) {
       res.status(404);
       return notFoundTemplate.render({path: req.path}, res);

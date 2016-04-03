@@ -1,0 +1,16 @@
+<nav>
+  <ul class="pager">
+    <li>
+      <em>Showing </em>
+      <strong>${data.getStart(data.pagination)} - ${data.getEnd(data.pagination)}</strong>
+      <em> of </em>
+      <strong>${data.pagination.total}</strong>
+    </li>
+    <li class={disabled: data.isFirstPage(data.pagination)}>
+      <a href=(data.path + "?offset=" + data.previousPageOffset(data.pagination)) class="spf-link">Previous</a>
+    </li>
+    <li class={disabled: data.isLastPage(data.pagination)}>
+      <a href=(data.path + "?offset=" + data.nextPageOffset(data.pagination)) class="spf-link">Next</a>
+    </li>
+  </ul>
+</nav>

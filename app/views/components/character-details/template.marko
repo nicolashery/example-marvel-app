@@ -1,21 +1,21 @@
 <div class="media">
   <div class="media-left">
     <img
-      src=(data.character.thumbnail.path + "/portrait_xlarge." + data.character.thumbnail.extension)
+      src=data.getPortraitXLarge(data.character)
       alt=data.character.name
       title=data.character.name
     >
   </div>
   <div class="media-body">
     <p>
-      <a href=data.character.urls[0].url target="_blank">
+      <a href=data.getMarvelUrl(data.character) target="_blank">
         More details on Marvel.com
       </a>
     </p>
-    <if (data.character.comics.available > 0)>
+    <if (data.hasComics(data.character))>
       <h4>Comics</h4>
       <ul>
-        <for(comic in data.character.comics.items)>
+        <for(comic in data.getComics(data.character))>
           <li>${comic.name}</li>
         </for>
       </ul>

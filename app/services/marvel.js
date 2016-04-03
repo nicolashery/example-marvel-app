@@ -2,6 +2,8 @@ var crypto = require('crypto');
 var fetch = require('node-fetch');
 var queryString = require('query-string');
 
+var Character = require('../models/character');
+
 function Marvel(options) {
   this.publicKey = options.publicKey || '';
   this.privateKey = options.privateKey || '';
@@ -30,6 +32,13 @@ Marvel.prototype.findAllCharacters = function(options) {
       }
 
       return res.json();
+    })
+    .then(function(body) {
+      body.data.results = body.data.results.map(function(payload) {
+        return Character(payload);
+      });
+
+      return body;
     });
 };
 
@@ -51,6 +60,13 @@ Marvel.prototype.findCharacter = function(id) {
       }
 
       return res.json();
+    })
+    .then(function(body) {
+      body.data.results = body.data.results.map(function(payload) {
+        return Character(payload);
+      });
+
+      return body;
     });
 };
 

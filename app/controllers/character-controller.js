@@ -4,10 +4,8 @@ var characterTemplate = require('marko')
   .load(require.resolve('../views/pages/character.marko'));
 var notFoundTemplate = require('marko')
   .load(require.resolve('../views/pages/not-found.marko'));
-var errorTemplate = require('marko')
-  .load(require.resolve('../views/pages/error.marko'));
 
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
   var marvel = req.marvel;
 
   marvel.findAllCharacters()
@@ -17,15 +15,10 @@ exports.index = function(req, res) {
       characters: body.data.results,
       attributionText: body.attributionText
     }, res);
-  }, function(err) {
-    res.status(500);
-    errorTemplate.render({
-      message: err.message
-    }, res);
-  });
+  }, next);
 };
 
-exports.show = function(req, res) {
+exports.show = function(req, res, next) {
   var marvel = req.marvel;
   var id = req.params.id;
 
@@ -42,9 +35,6 @@ exports.show = function(req, res) {
       return notFoundTemplate.render({}, res);
     }
 
-    res.status(500);
-    errorTemplate.render({
-      message: err.message
-    }, res);
+    next(err);
   });
 };

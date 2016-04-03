@@ -1,1 +1,3 @@
-console.log('hello world!');
+/* global spf */
+
+spf.init();

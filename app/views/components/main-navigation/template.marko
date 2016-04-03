@@ -4,8 +4,11 @@
       <a href="/" class="navbar-brand">Marvel App</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class={"active": (data.path === "/characters")}>
-        <a href="/characters">Characters</a>
+      <li
+        id="spf-navbar-characters"
+        class={"active": (data.path.slice(0, "/characters".length) === "/characters")}
+      >
+        <a href="/characters" class="spf-link">Characters</a>
       </li>
     </ul>
   </div>

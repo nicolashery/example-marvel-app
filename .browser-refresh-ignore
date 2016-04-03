@@ -2,4 +2,5 @@
 *.marko.js
 .env
 /tmp/
-/static/
+/app/static/
+/static/**.map

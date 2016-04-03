@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ignore-path .gitignore .",
-    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else source .env && browser-refresh app/start; fi"
+    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else npm run start:dev; fi",
+    "start:dev": "source .env && concurrently --kill-others --raw 'brunch watch' 'browser-refresh app/start'"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,16 @@
   "homepage": "https://github.com/nicolashery/example-marvel-app#readme",
   "devDependencies": {
     "browser-refresh": "1.4.10",
+    "concurrently": "2.0.0",
     "eslint": "2.5.3"
   },
   "dependencies": {
     "browser-refresh-client": "1.1.4",
     "browser-refresh-taglib": "1.0.4",
+    "brunch": "2.6.1",
+    "css-brunch": "2.6.1",
     "express": "4.13.4",
+    "javascript-brunch": "2.0.0",
     "marko": "3.0.5",
     "morgan": "1.7.0",
     "node-fetch": "1.4.1",

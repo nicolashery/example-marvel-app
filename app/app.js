@@ -8,7 +8,7 @@ var router = require('./router');
 
 var app = express();
 
-app.use(express.static(path.join(__dirname, './assets')));
+app.use(express.static(path.join(__dirname, '../static')));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'short' : 'dev'));
 
 app.use(marvel());

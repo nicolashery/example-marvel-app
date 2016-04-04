@@ -22,18 +22,17 @@
     "url": "https://github.com/nicolashery/example-marvel-app/issues"
   },
   "homepage": "https://github.com/nicolashery/example-marvel-app#readme",
-  "devDependencies": {
-    "browser-refresh": "1.4.10",
-    "concurrently": "2.0.0",
-    "eslint": "2.5.3"
-  },
+  "devDependencies": {},
   "dependencies": {
     "bootstrap": "3.3.6",
+    "browser-refresh": "1.4.10",
     "browser-refresh-client": "1.1.4",
     "browser-refresh-taglib": "1.0.4",
     "brunch": "2.6.1",
     "clean-css-brunch": "2.0.0",
+    "concurrently": "2.0.0",
     "css-brunch": "2.6.1",
+    "eslint": "2.5.3",
     "express": "4.13.4",
     "fingerprint-brunch": "git://github.com/nicolashery/fingerprint-brunch.git#8d2c7649cbad49c0734abfa68e0078dc91b6644c",
     "javascript-brunch": "2.0.0",
@@ -45,5 +44,9 @@
     "spf": "2.3.2",
     "tcomb": "3.0.0",
     "uglify-js-brunch": "2.0.1"
+  },
+  "engines": {
+    "node": "4.x",
+    "npm": "2.x"
   }
 }

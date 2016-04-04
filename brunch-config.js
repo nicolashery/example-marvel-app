@@ -27,7 +27,13 @@ exports.config = {
   },
 
   // Configure your plugins
-  plugins: {},
+  plugins: {
+    fingerprint: {
+      manifest: './assets.json',
+      srcBasePath: 'static/',
+      destBasePath: 'static/'
+    }
+  },
 
   modules: {
     // Require (run) modules at the end of a bundle

@@ -20,8 +20,8 @@ exports.index = function(req, res, next) {
   .then(function(result) {
     var pageTitle = 'Characters';
     var templateData = {
+      $global: req.templateGlobals,
       pageTitle: pageTitle,
-      path: req.path,
       pagination: result.pagination,
       characters: result.characters,
       attributionText: result.attributionText
@@ -59,7 +59,7 @@ exports.show = function(req, res, next) {
   .then(function(result) {
     var pageTitle = result.character.name;
     var templateData = {
-      path: req.path,
+      $global: req.templateGlobals,
       pageTitle: pageTitle,
       character: result.character,
       attributionText: result.attributionText
@@ -88,7 +88,7 @@ exports.show = function(req, res, next) {
   .catch(function(err) {
     if (err.status === 404) {
       res.status(404);
-      return notFoundTemplate.render({path: req.path}, res);
+      return notFoundTemplate.render({$global: req.templateGlobals}, res);
     }
 
     next(err);

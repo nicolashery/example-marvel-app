@@ -2,11 +2,17 @@ exports.config = {
   // See http://brunch.io/#documentation for docs.
   files: {
     javascripts: {
-      joinTo: 'js/app.js'
+      joinTo: {
+        'js/app.js': /^(app\/static\/js)/,
+        'js/vendor.js': /^(?!app\/static\/js)/
+      }
     },
 
     stylesheets: {
-      joinTo: 'css/app.css'
+      joinTo: {
+        'css/app.css': /^(app\/static\/css)/,
+        'css/vendor.css': /^(?!app\/static\/css)/
+      }
     }
   },
 
@@ -43,9 +49,10 @@ exports.config = {
   },
 
   npm: {
-    enabled: true,
-    // Whitelist the npm deps to be pulled in as front-end assets.
-    // All other deps in package.json will be excluded from the bundle.
-    whitelist: []
+    styles: {
+      bootstrap: ['dist/css/bootstrap.css'],
+      nprogress: ['nprogress.css']
+    },
+    globals: {spf: 'spf/dist/spf.js'}
   }
 };

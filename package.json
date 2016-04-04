@@ -28,6 +28,7 @@
     "eslint": "2.5.3"
   },
   "dependencies": {
+    "bootstrap": "3.3.6",
     "browser-refresh-client": "1.1.4",
     "browser-refresh-taglib": "1.0.4",
     "brunch": "2.6.1",
@@ -39,7 +40,9 @@
     "marko": "3.0.5",
     "morgan": "1.7.0",
     "node-fetch": "1.4.1",
+    "nprogress": "0.2.0",
     "query-string": "4.1.0",
+    "spf": "2.3.2",
     "tcomb": "3.0.0",
     "uglify-js-brunch": "2.0.1"
   }

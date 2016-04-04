@@ -1,4 +1,6 @@
-/* global spf, NProgress */
+/* global spf */
+
+var NProgress = require('nprogress');
 
 var app = app || {};
 

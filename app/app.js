@@ -1,5 +1,6 @@
 var path = require('path');
 var express = require('express');
+var compression = require('compression');
 var morgan = require('morgan');
 
 var marvel = require('./middlewares/marvel-middleware');
@@ -10,6 +11,7 @@ var router = require('./router');
 
 var app = express();
 
+app.use(compression());
 app.use(express.static(path.join(__dirname, '../static')));
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'short' : 'dev'));
 

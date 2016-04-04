@@ -30,6 +30,7 @@
     "browser-refresh-taglib": "1.0.4",
     "brunch": "2.6.1",
     "clean-css-brunch": "2.0.0",
+    "compression": "1.6.1",
     "concurrently": "2.0.0",
     "css-brunch": "2.6.1",
     "eslint": "2.5.3",

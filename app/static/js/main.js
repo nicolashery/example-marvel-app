@@ -3,6 +3,7 @@
 var NProgress = require('nprogress');
 
 var app = app || {};
+window.app = app;
 
 app.init = function() {
   if (window.addEventListener) {

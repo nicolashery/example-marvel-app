@@ -1,7 +1,7 @@
 var t = require('tcomb');
 
-var Url = require('./url');
-var Image = require('./image');
+var Url = require('app/models/url');
+var Image = require('app/models/image');
 
 var Character = t.struct({
   id: t.Number,

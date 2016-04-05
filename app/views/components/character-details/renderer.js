@@ -1,4 +1,4 @@
-var Character = require('../../../models/character');
+var Character = require('app/models/character');
 
 var template = require('marko')
   .load(require.resolve('./template.marko'));

@@ -3,11 +3,11 @@ var express = require('express');
 var compression = require('compression');
 var morgan = require('morgan');
 
-var marvel = require('./middlewares/marvel-middleware');
-var staticPath = require('./middlewares/static-path-middleware');
-var templateGlobals = require('./middlewares/template-globals-middleware');
-var errorHandler = require('./middlewares/error-handler-middleware');
-var router = require('./router');
+var marvel = require('app/middlewares/marvel-middleware');
+var staticPath = require('app/middlewares/static-path-middleware');
+var templateGlobals = require('app/middlewares/template-globals-middleware');
+var errorHandler = require('app/middlewares/error-handler-middleware');
+var router = require('app/router');
 
 var app = express();
 

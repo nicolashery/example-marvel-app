@@ -1,13 +1,13 @@
 var charactersTemplate = require('marko')
-  .load(require.resolve('../views/pages/characters/template.marko'));
+  .load(require.resolve('app/views/pages/characters/template.marko'));
 var charactersContentTemplate = require('marko')
-  .load(require.resolve('../views/pages/characters/content.marko'));
+  .load(require.resolve('app/views/pages/characters/content.marko'));
 var characterTemplate = require('marko')
-  .load(require.resolve('../views/pages/character/template.marko'));
+  .load(require.resolve('app/views/pages/character/template.marko'));
 var characterContentTemplate = require('marko')
-  .load(require.resolve('../views/pages/character/content.marko'));
+  .load(require.resolve('app/views/pages/character/content.marko'));
 var notFoundTemplate = require('marko')
-  .load(require.resolve('../views/pages/not-found/template.marko'));
+  .load(require.resolve('app/views/pages/not-found/template.marko'));
 
 exports.index = function(req, res, next) {
   var marvel = req.marvel;

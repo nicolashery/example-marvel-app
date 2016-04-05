@@ -2,8 +2,8 @@ var crypto = require('crypto');
 var fetch = require('node-fetch');
 var queryString = require('query-string');
 
-var Pagination = require('../models/pagination');
-var Character = require('../models/character');
+var Pagination = require('app/models/pagination');
+var Character = require('app/models/character');
 
 function Marvel(options) {
   this.publicKey = options.publicKey || '';

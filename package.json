@@ -8,8 +8,8 @@
     "postinstall": "if [ \"$NODE_ENV\" = \"production\" ]; then npm run build:prod; fi",
     "lint": "eslint --ignore-path .gitignore .",
     "clean": "rm -rf static && rm -rf assets.json",
-    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then node app/start; else npm run start:dev; fi",
-    "start:dev": "source .env && concurrently --kill-others --raw 'brunch watch' 'browser-refresh app/start'",
+    "start": "if [ \"$NODE_ENV\" = \"production\" ]; then NODE_PATH=. node app/start; else npm run start:dev; fi",
+    "start:dev": "source .env && NODE_PATH=. concurrently --kill-others --raw 'brunch watch' 'browser-refresh app/start'",
     "build:prod": "brunch build --production"
   },
   "repository": {
@@ -35,6 +35,7 @@
     "clean-css-brunch": "2.0.0",
     "compression": "1.6.1",
     "css-brunch": "2.6.1",
+    "enforce-node-path": "1.0.0",
     "express": "4.13.4",
     "fingerprint-brunch": "git://github.com/nicolashery/fingerprint-brunch.git#8d2c7649cbad49c0734abfa68e0078dc91b6644c",
     "javascript-brunch": "2.0.0",

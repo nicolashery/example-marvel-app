@@ -1,4 +1,4 @@
-var Pagination = require('../../../models/pagination');
+var Pagination = require('app/models/pagination');
 
 var template = require('marko')
   .load(require.resolve('./template.marko'));

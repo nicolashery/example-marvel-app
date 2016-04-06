@@ -24,7 +24,7 @@ Character.getPortraitXLarge = function(character) {
 Character.getMarvelUrl = function(character) {
   return character.urls.find(function(url) {
     return url.type === 'detail';
-  })[0];
+  }).url;
 };
 
 Character.hasComics = function(character) {

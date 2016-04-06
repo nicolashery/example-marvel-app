@@ -5,7 +5,12 @@
     <div class="page-header">
       <h1>Error</h1>
     </div>
-    <p>An unexpected error occured.</p>
-    <p>${data.message}</p>
+    <if(data.stack)>
+      <pre>${data.stack}</pre>
+    </if>
+    <else>
+      <p>An unexpected error occured.</p>
+      <p>${data.message}</p>
+    </else>
   </layout-put>
 </layout-use>

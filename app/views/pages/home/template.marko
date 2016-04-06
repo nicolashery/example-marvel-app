@@ -5,6 +5,10 @@
       <p>This is an example app using the <a href="https://developer.marvel.com/" target="_blank">Marvel API</a> data.</p>
       <p><a class="btn btn-primary btn-lg" href="/characters" role="button">Browse characters</a></p>
     </div>
-    <featured-characters characters=data.characters/>
+  </layout-put>
+  <layout-put into="below-the-fold">
+    <async-fragment data-provider=data.charactersDataProvider var="characters">
+      <featured-characters characters=characters/>
+    </async-fragment>
   </layout-put>
 </layout-use>

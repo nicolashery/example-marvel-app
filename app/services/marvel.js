@@ -117,9 +117,12 @@ Marvel.prototype.fetchFeaturedCharacters = function() {
   };
 
   return new Promise(function(resolve) {
-    resolve({
-      characters: body.data.results
-    });
+    // Add fake delay to showcase Chunked Transfer Encoding
+    setTimeout(function() {
+      resolve({
+        characters: body.data.results
+      });
+    }, 1000);
   });
 };
 

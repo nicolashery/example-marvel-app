@@ -14,9 +14,12 @@
     <div id="spf-content" class="container">
       <layout-placeholder name="content"/>
     </div>
-    <main-footer/>
     <script src=out.global.staticPath("/js/vendor.js")></script>
     <script src=out.global.staticPath("/js/app.js")></script>
     <browser-refresh/>
+    <div class="container">
+      <layout-placeholder name="below-the-fold"/>
+    </div>
+    <main-footer/>
   </body>
 </html>

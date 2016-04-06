@@ -1,18 +1,22 @@
 var homeTemplate = require('marko')
   .load(require.resolve('app/views/pages/home/template.marko'));
 
-exports.index = function(req, res, next) {
+exports.index = function(req, res) {
   var marvel = req.marvel;
 
-  marvel.fetchFeaturedCharacters()
-  .then(function(result) {
-    var templateData = {
-      $global: req.templateGlobals,
-      pageTitle: 'Home',
-      characters: result.characters
-    };
+  var charactersDataProvider = marvel.fetchFeaturedCharacters()
+    .then(function(results) {
+      return results.characters;
+    })
+    .catch(function() {
+      return [];
+    });
 
-    homeTemplate.render(templateData, res);
-  })
-  .catch(next);
+  var templateData = {
+    $global: req.templateGlobals,
+    pageTitle: 'Home',
+    charactersDataProvider: charactersDataProvider
+  };
+
+  homeTemplate.render(templateData, res);
 };

@@ -42,8 +42,7 @@ Marvel.prototype.findAllCharacters = function(options) {
 
       return {
         pagination: pagination,
-        characters: characters,
-        attributionText: body.attributionText
+        characters: characters
       };
     });
 };
@@ -71,8 +70,7 @@ Marvel.prototype.findCharacter = function(id) {
       var character = Character(body.data.results[0]);
 
       return {
-        character: character,
-        attributionText: body.attributionText
+        character: character
       };
     });
 };
@@ -80,7 +78,6 @@ Marvel.prototype.findCharacter = function(id) {
 Marvel.prototype.fetchFeaturedCharacters = function() {
   // Endpoint doesn't exist, so fake it
   var body = {
-    attributionText: 'Data provided by Marvel. © 2016 MARVEL',
     data: {
       results: [
         {
@@ -121,8 +118,7 @@ Marvel.prototype.fetchFeaturedCharacters = function() {
 
   return new Promise(function(resolve) {
     resolve({
-      characters: body.data.results,
-      attributionText: body.attributionText
+      characters: body.data.results
     });
   });
 };

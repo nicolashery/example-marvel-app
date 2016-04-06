@@ -9,8 +9,7 @@ exports.index = function(req, res, next) {
     var templateData = {
       $global: req.templateGlobals,
       pageTitle: 'Home',
-      characters: result.characters,
-      attributionText: result.attributionText
+      characters: result.characters
     };
 
     homeTemplate.render(templateData, res);

@@ -23,8 +23,7 @@ exports.index = function(req, res, next) {
       $global: req.templateGlobals,
       pageTitle: pageTitle,
       pagination: result.pagination,
-      characters: result.characters,
-      attributionText: result.attributionText
+      characters: result.characters
     };
 
     if (spf === 'navigate') {
@@ -61,8 +60,7 @@ exports.show = function(req, res, next) {
     var templateData = {
       $global: req.templateGlobals,
       pageTitle: pageTitle,
-      character: result.character,
-      attributionText: result.attributionText
+      character: result.character
     };
 
     if (spf === 'navigate') {

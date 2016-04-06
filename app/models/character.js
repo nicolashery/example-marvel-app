@@ -27,6 +27,10 @@ Character.getMarvelUrl = function(character) {
   }).url;
 };
 
+Character.hasDescription = function(character) {
+  return character.description.length > 0;
+};
+
 Character.hasComics = function(character) {
   return character.comics.available > 0;
 };

@@ -12,6 +12,10 @@
         More details on Marvel.com
       </a>
     </p>
+    <if (data.hasDescription(data.character))>
+      <h4>Description</h4>
+      <p>${data.character.description}</p>
+    </if>
     <if (data.hasComics(data.character))>
       <h4>Comics</h4>
       <ul>

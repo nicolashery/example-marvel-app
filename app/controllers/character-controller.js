@@ -1,3 +1,5 @@
+var PageTitleHelpers = require('app/helpers/page-title');
+
 var charactersTemplate = require('marko')
   .load(require.resolve('app/views/pages/characters/template.marko'));
 var charactersContentTemplate = require('marko')
@@ -18,7 +20,7 @@ exports.index = function(req, res, next) {
     offset: offset
   })
   .then(function(result) {
-    var pageTitle = 'Characters';
+    var pageTitle = PageTitleHelpers.makeTitle('Characters');
     var templateData = {
       $global: req.templateGlobals,
       pageTitle: pageTitle,
@@ -56,7 +58,7 @@ exports.show = function(req, res, next) {
 
   marvel.findCharacter(id)
   .then(function(result) {
-    var pageTitle = result.character.name;
+    var pageTitle = PageTitleHelpers.makeTitle(result.character.name);
     var templateData = {
       $global: req.templateGlobals,
       pageTitle: pageTitle,

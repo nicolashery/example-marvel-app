@@ -17,10 +17,6 @@ var Character = t.struct({
   series: t.Object
 }, 'Character');
 
-Character.getPortraitXLarge = function(character) {
-  return Image.getPortraitXLarge(character.thumbnail);
-};
-
 Character.getMarvelUrl = function(character) {
   return character.urls.find(function(url) {
     return url.type === 'detail';

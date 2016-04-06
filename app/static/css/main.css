@@ -2,3 +2,14 @@
   display: inline-block;
   margin-right: 5px;
 }
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.thumbnail:hover,
+a.thumbnail:focus {
+  text-decoration: none;
+}

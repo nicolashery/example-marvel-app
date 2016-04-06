@@ -28,10 +28,4 @@ app.onSpfDone = function() {
   NProgress.done();
 };
 
-app.back = function() {
-  if (typeof window.history !== 'undefined') {
-    window.history.back();
-  }
-};
-
 app.init();

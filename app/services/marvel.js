@@ -77,6 +77,56 @@ Marvel.prototype.findCharacter = function(id) {
     });
 };
 
+Marvel.prototype.fetchFeaturedCharacters = function() {
+  // Endpoint doesn't exist, so fake it
+  var body = {
+    attributionText: 'Data provided by Marvel. © 2016 MARVEL',
+    data: {
+      results: [
+        {
+          id: 1009610,
+          name: 'Spider-Man',
+          thumbnail: {
+            path: 'http://i.annihil.us/u/prod/marvel/i/mg/3/50/526548a343e4b',
+            extension: 'jpg'
+          }
+        },
+        {
+          id: 1010338,
+          name: 'Captain Marvel (Carol Danvers)',
+          thumbnail: {
+            path: 'http://i.annihil.us/u/prod/marvel/i/mg/6/80/5269608c1be7a',
+            extension: 'jpg'
+          }
+        },
+        {
+          id: 1009351,
+          name: 'Hulk',
+          thumbnail: {
+            path: 'http://i.annihil.us/u/prod/marvel/i/mg/5/a0/538615ca33ab0',
+            extension: 'jpg'
+          }
+        },
+        {
+          id: 1009189,
+          name: 'Black Widow',
+          thumbnail: {
+            path: 'http://i.annihil.us/u/prod/marvel/i/mg/f/30/50fecad1f395b',
+            extension: 'jpg'
+          }
+        }
+      ]
+    }
+  };
+
+  return new Promise(function(resolve) {
+    resolve({
+      characters: body.data.results,
+      attributionText: body.attributionText
+    });
+  });
+};
+
 Marvel.prototype._createHash = function(ts) {
   var content = ts + this.privateKey + this.publicKey;
   var hash = crypto.createHash('md5').update(content).digest('hex');

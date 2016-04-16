@@ -1,0 +1,35 @@
+<div class="media">
+  <div class="media-left">
+    <img
+      src=data.getPortraitXLarge(data.comic.thumbnail)
+      alt=data.comic.title
+      title=data.comic.title
+    >
+  </div>
+  <div class="media-body">
+    <p>
+      <a href=data.getMarvelUrl(data.comic) target="_blank">
+        More details on Marvel.com
+      </a>
+    </p>
+    <if (data.hasDescription(data.comic))>
+      <h4>Description</h4>
+      <p>${data.comic.description}</p>
+    </if>
+    <if (data.hasCharacters(data.comic))>
+      <h4>Characters</h4>
+      <ul>
+        <for(characterSummary in data.getCharacters(data.comic))>
+          <li>
+            <a
+              href=('/characters/' + data.getCharacterId(characterSummary))
+              class='spf-link'
+            >
+              ${characterSummary.name}
+            </a>
+          </li>
+        </for>
+      </ul>
+    </if>
+  </div>
+</div>

@@ -3,12 +3,19 @@
     <div class="jumbotron">
       <h1>Marvel App</h1>
       <p>This is an example app using the <a href="https://developer.marvel.com/" target="_blank">Marvel API</a> data.</p>
-      <p><a class="btn btn-primary btn-lg" href="/characters" role="button">Browse characters</a></p>
+      <p>
+        <a class="btn btn-primary btn-lg" href="/characters" role="button">Browse characters</a>
+        <span> </span>
+        <a class="btn btn-primary btn-lg" href="/comics" role="button">Browse comics</a>
+      </p>
     </div>
   </layout-put>
   <layout-put into="below-the-fold">
     <async-fragment data-provider=data.charactersDataProvider var="characters">
       <featured-characters characters=characters/>
+    </async-fragment>
+    <async-fragment data-provider=data.comicsDataProvider var="comics">
+      <featured-comics comics=comics/>
     </async-fragment>
   </layout-put>
 </layout-use>

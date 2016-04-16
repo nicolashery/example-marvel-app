@@ -1,17 +1,17 @@
 <if(data.characters.length)>
   <h2>Featured characters</h2>
   <div class="container row">
-    <for(character in data.characters)>
+    <for(featuredCharacter in data.characters)>
       <div class="col-md-3">
-        <a href=('/characters/' + character.id) class="thumbnail">
+        <a href=('/characters/' + featuredCharacter.id) class="thumbnail">
           <img
             class="img-responsive img-circle center-block"
-            src=data.getStandardXLarge(character.thumbnail)
-            alt=character.name
-            title=character.name
+            src=data.getStandardXLarge(featuredCharacter.thumbnail)
+            alt=featuredCharacter.name
+            title=featuredCharacter.name
           >
           <div class="caption">
-            <h4 class="text-center text-ellipsis">${character.name}</h4>
+            <h4 class="text-center text-ellipsis">${featuredCharacter.name}</h4>
           </div>
         </a>
       </div>

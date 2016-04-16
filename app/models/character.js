@@ -2,16 +2,17 @@ var t = require('tcomb');
 
 var Url = require('app/models/url');
 var Image = require('app/models/image');
+var ComicList = require('app/models/comic-list');
 
 var Character = t.struct({
   id: t.Number,
   name: t.String,
-  description: t.String,
+  description: t.maybe(t.String),
   modified: t.String,
   resourceURI: t.String,
   urls: t.list(Url),
   thumbnail: Image,
-  comics: t.Object,
+  comics: ComicList,
   stories: t.Object,
   events: t.Object,
   series: t.Object
@@ -24,7 +25,10 @@ Character.getMarvelUrl = function(character) {
 };
 
 Character.hasDescription = function(character) {
-  return character.description.length > 0;
+  return (
+    character.description &&
+    character.description.length > 0
+  );
 };
 
 Character.hasComics = function(character) {

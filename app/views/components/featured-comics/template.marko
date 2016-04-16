@@ -1,0 +1,20 @@
+<if(data.comics.length)>
+  <h2>Featured comics</h2>
+  <div class="container row">
+    <for(featuredComic in data.comics)>
+      <div class="col-md-3">
+        <a href=('/comics/' + featuredComic.id) class="thumbnail">
+          <img
+            class="img-responsive img-circle center-block"
+            src=data.getStandardXLarge(featuredComic.thumbnail)
+            alt=featuredComic.name
+            title=featuredComic.name
+          >
+          <div class="caption">
+            <h4 class="text-center text-ellipsis">${featuredComic.name}</h4>
+          </div>
+        </a>
+      </div>
+    </for>
+  </div>
+</if>

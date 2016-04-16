@@ -1,13 +1,13 @@
 var PageTitleHelpers = require('app/helpers/page-title');
 
-var charactersTemplate = require('marko')
-  .load(require.resolve('app/views/pages/characters/template.marko'));
-var charactersContentTemplate = require('marko')
-  .load(require.resolve('app/views/pages/characters/content.marko'));
-var characterTemplate = require('marko')
-  .load(require.resolve('app/views/pages/character/template.marko'));
-var characterContentTemplate = require('marko')
-  .load(require.resolve('app/views/pages/character/content.marko'));
+var comicsTemplate = require('marko')
+  .load(require.resolve('app/views/pages/comics/template.marko'));
+var comicsContentTemplate = require('marko')
+  .load(require.resolve('app/views/pages/comics/content.marko'));
+var comicTemplate = require('marko')
+  .load(require.resolve('app/views/pages/comic/template.marko'));
+var comicContentTemplate = require('marko')
+  .load(require.resolve('app/views/pages/comic/content.marko'));
 var notFoundTemplate = require('marko')
   .load(require.resolve('app/views/pages/not-found/template.marko'));
 
@@ -16,20 +16,20 @@ exports.index = function(req, res, next) {
   var spf = req.query.spf;
   var offset = req.query.offset;
 
-  marvel.findAllCharacters({
+  marvel.findAllComics({
     offset: offset
   })
   .then(function(result) {
-    var pageTitle = PageTitleHelpers.makeTitle('Characters');
+    var pageTitle = PageTitleHelpers.makeTitle('Comics');
     var templateData = {
       $global: req.templateGlobals,
       pageTitle: pageTitle,
       pagination: result.pagination,
-      characters: result.characters
+      comics: result.comics
     };
 
     if (spf === 'navigate') {
-      return charactersContentTemplate.render(templateData, function(err, html) {
+      return comicsContentTemplate.render(templateData, function(err, html) {
         if (err) {
           return next(err);
         }
@@ -37,8 +37,8 @@ exports.index = function(req, res, next) {
         res.send({
           title: pageTitle,
           attr: {
-            'spf-navbar-characters': {class: 'active'},
-            'spf-navbar-comics': {class: ''}
+            'spf-navbar-characters': {class: ''},
+            'spf-navbar-comics': {class: 'active'}
           },
           body: {
             'spf-content': html
@@ -47,7 +47,7 @@ exports.index = function(req, res, next) {
       });
     }
 
-    charactersTemplate.render(templateData, res);
+    comicsTemplate.render(templateData, res);
   })
   .catch(next);
 };
@@ -57,17 +57,17 @@ exports.show = function(req, res, next) {
   var id = req.params.id;
   var spf = req.query.spf;
 
-  marvel.findCharacter(id)
+  marvel.findComic(id)
   .then(function(result) {
-    var pageTitle = PageTitleHelpers.makeTitle(result.character.name);
+    var pageTitle = PageTitleHelpers.makeTitle(result.comic.name);
     var templateData = {
       $global: req.templateGlobals,
       pageTitle: pageTitle,
-      character: result.character
+      comic: result.comic
     };
 
     if (spf === 'navigate') {
-      return characterContentTemplate.render(templateData, function(err, html) {
+      return comicContentTemplate.render(templateData, function(err, html) {
         if (err) {
           return next(err);
         }
@@ -75,8 +75,8 @@ exports.show = function(req, res, next) {
         res.send({
           title: pageTitle,
           attr: {
-            'spf-navbar-characters': {class: 'active'},
-            'spf-navbar-comics': {class: ''}
+            'spf-navbar-characters': {class: ''},
+            'spf-navbar-comics': {class: 'active'}
           },
           body: {
             'spf-content': html
@@ -85,7 +85,7 @@ exports.show = function(req, res, next) {
       });
     }
 
-    characterTemplate.render(templateData, res);
+    comicTemplate.render(templateData, res);
   })
   .catch(function(err) {
     if (err.status === 404) {

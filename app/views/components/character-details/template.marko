@@ -19,8 +19,15 @@
     <if (data.hasComics(data.character))>
       <h4>Comics</h4>
       <ul>
-        <for(comic in data.getComics(data.character))>
-          <li>${comic.name}</li>
+        <for(comicSummary in data.getComics(data.character))>
+          <li>
+            <a
+              href=('/comics/' + data.getComicId(comicSummary))
+              class='spf-link'
+            >
+              ${comicSummary.name}
+            </a>
+          </li>
         </for>
       </ul>
     </if>

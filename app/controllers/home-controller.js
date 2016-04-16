@@ -14,10 +14,19 @@ exports.index = function(req, res) {
       return [];
     });
 
+  var comicsDataProvider = marvel.fetchFeaturedComics()
+    .then(function(results) {
+      return results.comics;
+    })
+    .catch(function() {
+      return [];
+    });
+
   var templateData = {
     $global: req.templateGlobals,
     pageTitle: PageTitleHelpers.makeTitle(),
-    charactersDataProvider: charactersDataProvider
+    charactersDataProvider: charactersDataProvider,
+    comicsDataProvider: comicsDataProvider
   };
 
   homeTemplate.render(templateData, res);

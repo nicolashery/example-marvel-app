@@ -10,7 +10,8 @@ exports.index = function(req, res) {
     .then(function(results) {
       return results.characters;
     })
-    .catch(function() {
+    .catch(function(err) {
+      console.log(err.stack || err);
       return [];
     });
 
@@ -18,7 +19,8 @@ exports.index = function(req, res) {
     .then(function(results) {
       return results.comics;
     })
-    .catch(function() {
+    .catch(function(err) {
+      console.log(err.stack || err);
       return [];
     });
 
@@ -29,5 +31,8 @@ exports.index = function(req, res) {
     comicsDataProvider: comicsDataProvider
   };
 
-  homeTemplate.render(templateData, res);
+  homeTemplate.render(templateData, res)
+    .on('error', function(err) {
+      console.log(err.stack || err);
+    });
 };
